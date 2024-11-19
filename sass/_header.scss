@@ -1,0 +1,128 @@
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+    .site-branding {
+        display: flex;
+        align-items: center;
+    }
+
+    &:has(.toggled) {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        .site-branding {
+            // moving logo to the bottom when menu is opened
+            order: 2;
+            margin: 20px;
+        }
+    }
+}
+
+.custom-logo {
+    max-height: 50px;
+}
+
+.main-navigation {
+    &__menu {
+        display: none;
+        .menu {
+            display: none;
+            flex-direction: column;
+
+            li {
+                margin: 10px 20px 10px 10px;
+
+                a {
+                    font-family: "Overpass";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 500;
+                    letter-spacing: 1.6px;
+                    color: $color__grey;
+                    text-decoration: none;
+                    text-transform: uppercase;
+
+                    &:hover,
+                    &:focus {
+                        color: $color__accent;
+                        text-shadow: 1px -1px 0px black;
+                    }
+                }
+
+                &.current-menu-item {
+                    a {
+                        color: $color__accent;
+                        font-weight: 800;
+                    }
+                }
+            }
+        }
+    }
+
+    .menu-toggle {
+        background-color: transparent;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+
+        &::after {
+            content: "\f349";
+            font-family: dashicons;
+            font-size: 26px;
+            color: black;
+            line-height: 100%;
+        }
+    }
+
+    &.toggled {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        order: 1;
+
+        .main-navigation__menu {
+            display: block;
+
+            .menu {
+                display: flex;
+            }
+        }
+
+        .menu-toggle {
+            &::after {
+                content: "\f335";
+                font-size: 36px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .site-header {
+        flex-direction: row;
+    }
+
+    .main-navigation {
+        display: flex;
+        align-items: center;
+
+        .menu-toggle {
+            display: none;
+        }
+
+        &__menu {
+            display: flex;
+            align-items: center;
+
+            .menu {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+    }
+}

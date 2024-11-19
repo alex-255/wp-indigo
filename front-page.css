@@ -1,0 +1,32 @@
+/* Variables
+--------------------------------------------- */
+.front-page-in-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 243px;
+  margin-bottom: 72px;
+}
+.front-page-in-center .site-name {
+  color: #1a1a1a;
+  font-family: Overpass;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 2.5px;
+  margin-top: 30px;
+}
+.front-page-in-center .site-description {
+  color: #555555;
+  font-family: "Source Serif 4";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 168.75%;
+  letter-spacing: 0.48px;
+  margin-top: 20px;
+}
+
+/*# sourceMappingURL=front-page.css.map */

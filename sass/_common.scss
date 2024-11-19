@@ -1,0 +1,48 @@
+.container-800 {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $color__grey;
+    font-family: Overpass;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+textarea,
+input[type="text"] {
+    border: dotted 1px $color__grey;
+}
+
+.comment-form {
+    label {
+        display: block;
+    }
+}
+
+input[type="submit"] {
+    border: dotted 1px $color__grey;
+    padding: 10px 20px;
+    transition: all 300ms;
+
+    &:hover,
+    &:focus {
+        border: solid 1px $color__grey;
+        background-color: $color__grey-lighter;
+        color: white;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    p {
+        padding: 10px;
+    }
+}
