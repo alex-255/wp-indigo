@@ -144,7 +144,7 @@ function indigo_scripts() {
 
 	
 
-	wp_enqueue_style( 'indigo-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'indigo-style', get_stylesheet_uri(), array('dashicons'), _S_VERSION );
 	wp_style_add_data( 'indigo-style', 'rtl', 'replace' );
 	
 	wp_enqueue_script( 'tailwind', 'https://cdn.tailwindcss.com', array(), _S_VERSION, true );

@@ -128,7 +128,7 @@ if ( ! function_exists( 'indigo_post_thumbnail' ) ) :
 			?>
 
 <div class="post-thumbnail">
-    <?php the_post_thumbnail(); ?>
+    <?php the_post_thumbnail( 'medium_large' ); ?>
 </div><!-- .post-thumbnail -->
 
 <?php else : ?>
