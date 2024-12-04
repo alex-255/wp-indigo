@@ -128,7 +128,9 @@ if ( ! function_exists( 'indigo_post_thumbnail' ) ) :
 			?>
 
 <div class="post-thumbnail">
-    <?php the_post_thumbnail( 'medium_large' ); ?>
+    <?php the_post_thumbnail( 'medium_large', array(
+		'class' => 'mx-auto',
+	) ); ?>
 </div><!-- .post-thumbnail -->
 
 <?php else : ?>
@@ -136,13 +138,14 @@ if ( ! function_exists( 'indigo_post_thumbnail' ) ) :
 <a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
     <?php
 					the_post_thumbnail(
-						'post-thumbnail',
+						'large',
 						array(
 							'alt' => the_title_attribute(
 								array(
 									'echo' => false,
 								)
 							),
+							'class' => 'w-full'
 						)
 					);
 				?>

@@ -13,8 +13,10 @@
     <header class="entry-header">
         <?php the_title( '<h1 class="entry-title text-2xl tracking-widest text-center uppercase my-10">', '</h1>' ); ?>
     </header><!-- .entry-header -->
+    <div class="text-center">
+        <?php indigo_post_thumbnail(); ?>
+    </div>
 
-    <?php indigo_post_thumbnail(); ?>
 
     <div class="entry-content">
         <?php

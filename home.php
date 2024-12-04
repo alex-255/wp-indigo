@@ -48,15 +48,15 @@ get_header();
 
             </div><!-- .entry-meta -->
             <?php endif; ?>
-			<div class="thumbnail">
-				<?php indigo_post_thumbnail(); ?>
-			</div>
-            
+            <div class="thumbnail">
+                <?php indigo_post_thumbnail(); ?>
+            </div>
+
         </header><!-- .entry-header -->
 
 
 
-        <div class="entry-content col-span-2 lg:col-span-1 text-justify mx-2 lg:mx-0">
+        <div class="entry-content col-span-2 lg:col-span-1 text-justify mx-2 md:mx-1 lg:mx-0">
             <?php
 			echo wp_trim_words( get_the_content(), 110, null) ;
 			?>
