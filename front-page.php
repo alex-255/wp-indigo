@@ -9,7 +9,7 @@
 
 get_header();
 ?>
-<main class="front-page-in-center container-800">
+<main id="main-on-front" class="front-page-in-center container-800">
 
     <img src="<?php echo esc_url( get_template_directory_uri(  ) . "/images/girl.png" ) ?>" alt="Picture of a girl"
         class="rounded-full" />

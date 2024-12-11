@@ -1,5 +1,6 @@
 {
-  "devDependencies": {
-    "tailwindcss": "^3.4.16"
-  }
+    "devDependencies": {
+        "motion": "^11.13.1",
+        "tailwindcss": "^3.4.16"
+    }
 }

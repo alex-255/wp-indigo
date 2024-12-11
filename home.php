@@ -21,22 +21,52 @@ get_header();
             Welcome to my blog!
         </h1>
     </header><!-- .page-header -->
+    <div class="button-group filter-button-group container-800 flex justify-center items-center my-5">
+        <span class="mr-2"><strong>Filter:</strong></span> <button data-filter="*" class="mr-2">All</button>
+        <?php $categories = get_categories(); 
+        foreach ($categories as $category) {
+            ?><button data-filter=".<?php echo $category->slug; ?>"
+            class="mr-2"><?php echo $category->name; ?></button><?php
+        }
+        ?>
 
-    <?php
+
+    </div>
+    <div class="grid-parent container-800">
+
+        <?php
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post(); ?>
 
-    <article id="post-<?php the_ID(); ?>" <?php post_class("container-800 grid grid-cols-2 gap-x-10 mb-10"); ?>>
-        <header class="entry-header col-span-2 lg:col-span-1">
-            <?php
+        <?php 
+$post_categories = wp_get_post_categories( get_the_ID() );
+$cats = array();
+	if (is_array($post_categories)) {
+        foreach($post_categories as $c){
+            $cat = get_category( $c );
+            $cats[] = $cat->slug;
+        }
+        $cats_string = implode(" ", $cats); 
+    } else {
+        $cats_string = "";
+    }
+
+
+
+?>
+
+        <article id="post-<?php the_ID(); ?>"
+            <?php post_class("grid-item grid grid-cols-2 gap-x-10 mb-10 " . $cats_string); ?>>
+            <header class="entry-header col-span-2 lg:col-span-1">
+                <?php
 						
 			the_title( '<h2 class="entry-title text-xl"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 
 			if ( 'post' === get_post_type() ) :
 				?>
-            <div class="entry-meta mb-2">
-                <?php
+                <div class="entry-meta mb-2">
+                    <?php
 			indigo_posted_on();
 			indigo_posted_by();
 			$categories_list = get_the_category_list( esc_html__( ', ', 'indigo' ) );
@@ -46,29 +76,31 @@ get_header();
 			}
 								?>
 
-            </div><!-- .entry-meta -->
-            <?php endif; ?>
-            <div class="thumbnail">
-                <?php indigo_post_thumbnail(); ?>
-            </div>
+                </div><!-- .entry-meta -->
+                <?php endif; ?>
+                <div class="thumbnail">
+                    <?php indigo_post_thumbnail(); ?>
+                </div>
 
-        </header><!-- .entry-header -->
+            </header><!-- .entry-header -->
 
 
 
-        <div class="entry-content col-span-2 lg:col-span-1 text-justify mx-2 md:mx-1 lg:mx-0">
-            <?php
+            <div class="entry-content col-span-2 lg:col-span-1 text-justify mx-2 md:mx-1 lg:mx-0">
+                <?php
 			echo wp_trim_words( get_the_content(), 110, null) ;
 			?>
-        </div><!-- .entry-content -->
+            </div><!-- .entry-content -->
 
-        <footer class="entry-footer col-span-2 my-2 mx-2 lg:mx-0">
-            <?php indigo_entry_footer(); ?>
-        </footer><!-- .entry-footer -->
-    </article><!-- #post-<?php the_ID(); ?> -->
-    <?php
+            <footer class="entry-footer col-span-2 my-2 mx-2 lg:mx-0">
+                <?php indigo_entry_footer(); ?>
+            </footer><!-- .entry-footer -->
+        </article><!-- #post-<?php the_ID(); ?> -->
+        <?php
 			endwhile;
-
+            ?>
+    </div>
+    <?php
 			the_posts_navigation();
 
 		else :
