@@ -21,12 +21,12 @@ get_header();
             Welcome to my blog!
         </h1>
     </header><!-- .page-header -->
-    <div class="button-group filter-button-group container-800 flex justify-center items-center my-5">
-        <span class="mr-2"><strong>Filter:</strong></span> <button data-filter="*" class="mr-2">All</button>
+    <div class="button-group filter-button-group container-800 flex justify-center items-center my-10 text-xl">
+        <button data-filter="*" class="mr-4">All</button>
         <?php $categories = get_categories(); 
         foreach ($categories as $category) {
             ?><button data-filter=".<?php echo $category->slug; ?>"
-            class="mr-2"><?php echo $category->name; ?></button><?php
+            class="mr-4"><?php echo $category->name; ?></button><?php
         }
         ?>
 
@@ -56,46 +56,35 @@ $cats = array();
 
 ?>
 
-        <article id="post-<?php the_ID(); ?>"
-            <?php post_class("grid-item grid grid-cols-2 gap-x-10 mb-10 " . $cats_string); ?>>
-            <header class="entry-header col-span-2 lg:col-span-1">
-                <?php
+        <article class="<?php echo("grid-item w-full mb-10 " . $cats_string); ?>">
+            <main class="flex justify-between">
+                <header class="entry-header w-[60%]">
+                    <?php
 						
-			the_title( '<h2 class="entry-title text-xl"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			echo '<h2 class="entry-title text-xl"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark" >';
+            echo get_the_title();
+            echo '&nbsp;<span class="text-gray-500">' . wp_trim_words( get_the_content(), 10, null ) . '<span></a></h2>';
 
 			if ( 'post' === get_post_type() ) :
 				?>
-                <div class="entry-meta mb-2">
-                    <?php
-			indigo_posted_on();
-			indigo_posted_by();
+                    <div class="entry-meta mb-2 text-gray-500 font-semibold">
+                        <?php
+			
 			$categories_list = get_the_category_list( esc_html__( ', ', 'indigo' ) );
 			if ( $categories_list ) {
-				/* translators: 1: list of categories. */
-				printf( '<p class="cat-links">' . esc_html__( 'Posted in %1$s', 'indigo' ) . '</p>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo $categories_list;
 			}
 								?>
 
-                </div><!-- .entry-meta -->
-                <?php endif; ?>
-                <div class="thumbnail">
-                    <?php indigo_post_thumbnail(); ?>
+                    </div><!-- .entry-meta -->
+                    <?php endif; ?>
+
+                </header><!-- .entry-header -->
+                <div class="text-right mx-2 md:mx-1 lg:mx-0 flex text-gray-500 font-semibold">
+                    <?php echo get_the_modified_date(); ?>
                 </div>
-
-            </header><!-- .entry-header -->
-
-
-
-            <div class="entry-content col-span-2 lg:col-span-1 text-justify mx-2 md:mx-1 lg:mx-0">
-                <?php
-			echo wp_trim_words( get_the_content(), 110, null) ;
-			?>
-            </div><!-- .entry-content -->
-
-            <footer class="entry-footer col-span-2 my-2 mx-2 lg:mx-0">
-                <?php indigo_entry_footer(); ?>
-            </footer><!-- .entry-footer -->
-        </article><!-- #post-<?php the_ID(); ?> -->
+            </main>
+        </article>
         <?php
 			endwhile;
             ?>

@@ -63,12 +63,15 @@ input[type=text] {
   display: block;
 }
 
-input[type=submit] {
+input[type=submit],
+button[type=submit] {
   border: dotted 1px #1a1a1a;
   padding: 10px 20px;
   transition: all 300ms;
 }
-input[type=submit]:hover, input[type=submit]:focus {
+input[type=submit]:hover, input[type=submit]:focus,
+button[type=submit]:hover,
+button[type=submit]:focus {
   border: solid 1px #1a1a1a;
   background-color: #555555;
   color: white;
